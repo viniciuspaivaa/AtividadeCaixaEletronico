@@ -1,0 +1,15 @@
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\bin\Debug\net8.0\AtividadeCaixaEletronico.exe
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\bin\Debug\net8.0\AtividadeCaixaEletronico.deps.json
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\bin\Debug\net8.0\AtividadeCaixaEletronico.runtimeconfig.json
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\bin\Debug\net8.0\AtividadeCaixaEletronico.dll
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\bin\Debug\net8.0\AtividadeCaixaEletronico.pdb
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.AssemblyInfoInputs.cache
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.AssemblyInfo.cs
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.csproj.CoreCompileInputs.cache
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.sourcelink.json
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.dll
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\refint\AtividadeCaixaEletronico.dll
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.pdb
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\AtividadeCaixaEletronico.genruntimeconfig.cache
+C:\Users\Alunos\Desktop\AtividadeCaixaEletronico\obj\Debug\net8.0\ref\AtividadeCaixaEletronico.dll
