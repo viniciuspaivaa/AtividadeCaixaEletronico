@@ -71,11 +71,13 @@ class Program
                     Console.Clear();
                     Console.WriteLine($"Seu saldo na conta é R${saldo:F2}!\n");
                     break;
+
                 case 2:
                     Console.Clear();
                     string tipoConta = contaCorrente ? "corrente" : "poupança";
                     Console.WriteLine($"O tipo da sua conta é {tipoConta}!\n");
                     break;
+
                 case 3:
                     Console.WriteLine($"O limite da conta atual é R${limite:F2}, pressione Enter para adicionar um novo limite ou pressione outra tecla para sair...");
                     var key = Console.ReadKey(true);
@@ -91,6 +93,7 @@ class Program
                     Console.Clear();
                     Console.WriteLine("Novo limite adicionado!\n");
                     break;
+
                 case 4:
                     if(saldo <= 0)
                     {
@@ -106,6 +109,7 @@ class Program
                     Thread.Sleep(2000);
                     Console.WriteLine("Saque realizado com sucesso!\n");
                     break;
+
                 case 5:
                     float depos = Validacao("Digite o valor do depósito: ");
                     saldo += depos;
@@ -113,16 +117,41 @@ class Program
                     Console.Clear();
                     Console.WriteLine("Valor depositado com sucesso!\n");
                     break;
+
                 case 6:
+                    Console.Clear();
                     foreach(var movimento in extrato)
                     {
                         movimento.Movimentos();
                     }
                     Console.WriteLine("\n");
                     break;
+
+                case 7:
+                Console.Write("Digite o número da conta a ser depositado: ");
+                    if(!int.TryParse(Console.ReadLine(), out int conta))
+                    {
+                        Console.Write("Número inválido!");
+                        break;
+                    }
+                    float transf = Validacao("Digite o valor a ser transferido: ");
+                    if(transf > saldo || transf > limite)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Não foi possível transferir! Saldo insuficiente ou acima do limite da conta!\n");
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Transferência realizada com sucesso!\nDeduzido R${transf:F2} da sua conta para conta de número {conta}!");
+                    }
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Digite o número de serviço válido!\n");
+                    break;
             }
         }
         while(opcao != 0);
     }
-
 }
