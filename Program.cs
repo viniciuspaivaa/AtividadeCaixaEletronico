@@ -1,31 +1,24 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Net;
 
-
 class Extrato
 {
     public float Valor {get; set;}
     public string DataHora {get; set;}
+    public string Tipo {get; set;}
 
-    public Extrato(float valor)
+    public Extrato(float valor, string tipo)
     {
+        Tipo = tipo;
         Valor = valor;
         DataHora = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
     }
 
     public void Movimentos()
     {
-        if(Valor < 0)
-        {
-        Console.WriteLine($"Saque     R${Valor:F2}   {DataHora}");
-        }
-        else
-        {
-        Console.WriteLine($"Deposito  R${Valor:F2}   {DataHora}");
-        }
+        Console.WriteLine($"{Tipo.PadRight(14)}R$ {(Valor).ToString("F2").PadRight(11)}{DataHora}");
     }
 }
-
 
 class Program
 {
@@ -40,7 +33,6 @@ class Program
         return dinheiro;
     }
 
-
     static void Main(string[] args)
     {
         int opcao = 0;
@@ -49,12 +41,10 @@ class Program
         List<Extrato> extrato = new List<Extrato>();
         bool contaCorrente = true;
 
-
         Console.Clear();
         Console.WriteLine("=".PadLeft(19, '='));
         Console.WriteLine("Bem-vindo ao caixa!");
         Console.WriteLine("=".PadLeft(19, '='));
-
 
         do
         {
@@ -63,7 +53,6 @@ class Program
             {
                 Console.Write("Número inválido! Tente novamente: ");
             }
-
 
             switch(opcao)
             {
@@ -97,23 +86,24 @@ class Program
                 case 4:
                     if(saldo <= 0)
                     {
-                        Console.Write("Você não possui nenhum dinheiro para sacar!");
+                        Console.Clear();
+                        Console.WriteLine("Você não possui nenhum dinheiro para sacar!\n");
                     }
                     else
                     {
                         float saque = Validacao("Digite o valor do saque: ");
                         saldo -= saque;
-                        extrato.Add(new Extrato(-saque));
+                        extrato.Add(new Extrato(saque, "Saque"));
+                        Console.Clear();
+                        Thread.Sleep(2000);
+                        Console.WriteLine("Saque realizado com sucesso!\n");
                     }
-                    Console.Clear();
-                    Thread.Sleep(2000);
-                    Console.WriteLine("Saque realizado com sucesso!\n");
                     break;
 
                 case 5:
                     float depos = Validacao("Digite o valor do depósito: ");
                     saldo += depos;
-                    extrato.Add(new Extrato(depos));
+                    extrato.Add(new Extrato(depos, "Depósito"));
                     Console.Clear();
                     Console.WriteLine("Valor depositado com sucesso!\n");
                     break;
@@ -131,21 +121,25 @@ class Program
                 Console.Write("Digite o número da conta a ser depositado: ");
                     if(!int.TryParse(Console.ReadLine(), out int conta))
                     {
-                        Console.Write("Número inválido!");
+                        Console.Clear();
+                        Console.WriteLine("Número inválido!\n");
                         break;
                     }
                     float transf = Validacao("Digite o valor a ser transferido: ");
-                    if(transf > saldo || transf > limite)
+                    if(transf > saldo || transf > limite && limite > 0)
                     {
                         Console.Clear();
                         Console.WriteLine("Não foi possível transferir! Saldo insuficiente ou acima do limite da conta!\n");
                     }
                     else
                     {
+                        extrato.Add(new Extrato(transf, "Transferência"));
+                        saldo -= transf;
                         Console.Clear();
-                        Console.WriteLine($"Transferência realizada com sucesso!\nDeduzido R${transf:F2} da sua conta para conta de número {conta}!");
+                        Console.WriteLine($"Transferência realizada com sucesso!\nDeduzido R${transf:F2} da sua conta para conta de número {conta}!\n");
                     }
                     break;
+
                 default:
                     Console.Clear();
                     Console.WriteLine("Digite o número de serviço válido!\n");
