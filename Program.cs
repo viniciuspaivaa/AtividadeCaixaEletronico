@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.Contracts;
+using System.Net;
 
 
 class Extrato
@@ -28,6 +29,18 @@ class Extrato
 
 class Program
 {
+    public static float Validacao(string msg)
+    {
+        float dinheiro;
+        Console.Write(msg);
+        while(!float.TryParse(Console.ReadLine(), out dinheiro))
+        {
+            Console.Write("Número Inválido! Tente novamente: ");
+        }
+        return dinheiro;
+    }
+
+
     static void Main(string[] args)
     {
         int opcao = 0;
@@ -68,8 +81,7 @@ class Program
                     var key = Console.ReadKey(true);
                     if(key.Key == ConsoleKey.Enter)
                     {
-                        Console.Write("Digite o novo saldo: ");
-                        saldo = int.Parse(Console.ReadLine());
+                        limite = Validacao("Digite o novo saldo: ");
                     }
                     else
                     {
@@ -86,8 +98,7 @@ class Program
                     }
                     else
                     {
-                        Console.Write("Digite o valor do saque: ");
-                        float saque = float.Parse(Console.ReadLine());
+                        float saque = Validacao("Digite o valor do saque: ");
                         saldo -= saque;
                         extrato.Add(new Extrato(-saque));
                     }
@@ -96,8 +107,7 @@ class Program
                     Console.WriteLine("Saque realizado com sucesso!\n");
                     break;
                 case 5:
-                    Console.Write("Digite o valor do depósito: ");
-                    float depos = float.Parse(Console.ReadLine());
+                    float depos = Validacao("Digite o valor do depósito: ");
                     saldo += depos;
                     extrato.Add(new Extrato(depos));
                     Console.Clear();
